@@ -1,0 +1,6 @@
+Variant,Accuracy,Acc_std,Features,Runtime_s
+Full QSQ-FS,0.63,0.0458,42.8,6.82
+No QS (w_AI off),0.61,0.0831,44.6,6.88
+No QQ archive,0.64,0.08,46.1,7.65
+No Cache,0.63,0.0458,42.8,31.44
+No Elitism,0.69,0.1578,52.7,6.9

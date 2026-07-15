@@ -1,0 +1,122 @@
+[
+  {
+    "id": "F01_cohort",
+    "file": "F01_cohort.png",
+    "title": "Cohort composition",
+    "desc": "Class balance: diabetic vs non-diabetic patients."
+  },
+  {
+    "id": "F02_modalities",
+    "file": "F02_modalities.png",
+    "title": "Features per modality",
+    "desc": "How many measurements each clinical modality contributes."
+  },
+  {
+    "id": "F03_density",
+    "file": "F03_density.png",
+    "title": "Data density by modality",
+    "desc": "Fraction of non-zero entries per modality (sparsity of meds/dx vs labs/vitals)."
+  },
+  {
+    "id": "F04_top_feature_dist",
+    "file": "F04_top_feature_dist.png",
+    "title": "item_220210 by status",
+    "desc": "Overlaid distributions of the top predictor split by diabetes status (dashed = medians)."
+  },
+  {
+    "id": "F05_boxplots",
+    "file": "F05_boxplots.png",
+    "title": "Top-6 feature boxplots",
+    "desc": "Distribution of the six most discriminative continuous features, split by status."
+  },
+  {
+    "id": "F06_univariate_auc",
+    "file": "F06_univariate_auc.png",
+    "title": "Univariate discriminative power",
+    "desc": "Each feature's standalone ability to separate diabetics (AUC), coloured by modality."
+  },
+  {
+    "id": "F07_volcano",
+    "file": "F07_volcano.png",
+    "title": "Volcano plot",
+    "desc": "Effect size (Cohen's d) against statistical significance for every feature; labelled points are the strongest."
+  },
+  {
+    "id": "F08_corr",
+    "file": "F08_corr.png",
+    "title": "Stable-feature correlations",
+    "desc": "Pearson correlations among the stably-selected features (redundancy check)."
+  },
+  {
+    "id": "F09_odds_ratios",
+    "file": "F09_odds_ratios.png",
+    "title": "Odds ratios (logistic)",
+    "desc": "Multivariable-adjusted odds ratios per 1-SD increase, 95% bootstrap CI; vertical line = no effect."
+  },
+  {
+    "id": "F10_perfold",
+    "file": "F10_perfold.png",
+    "title": "Per-fold performance",
+    "desc": "AUC / accuracy / F1 for each outer fold (dotted = mean AUC); shows estimate stability."
+  },
+  {
+    "id": "F11_roc",
+    "file": "F11_roc.png",
+    "title": "ROC curve",
+    "desc": "Out-of-fold ROC; area under curve summarises ranking quality."
+  },
+  {
+    "id": "F12_pr",
+    "file": "F12_pr.png",
+    "title": "Precision-Recall curve",
+    "desc": "PR curve \u2014 more informative than ROC under class imbalance; AP = average precision."
+  },
+  {
+    "id": "F13_calibration",
+    "file": "F13_calibration.png",
+    "title": "Calibration curve",
+    "desc": "Are predicted probabilities trustworthy? Points on the diagonal = well-calibrated."
+  },
+  {
+    "id": "F14_separation",
+    "file": "F14_separation.png",
+    "title": "Probability separation",
+    "desc": "Distribution of predicted risk for each true class; overlap = where mistakes happen."
+  },
+  {
+    "id": "F15_threshold",
+    "file": "F15_threshold.png",
+    "title": "Threshold sweep",
+    "desc": "How sensitivity/specificity/F1 trade off with the decision threshold; red = optimal Youden point."
+  },
+  {
+    "id": "F16_confusion",
+    "file": "F16_confusion.png",
+    "title": "Confusion matrix",
+    "desc": "Out-of-fold confusion as raw counts and per-class rates."
+  },
+  {
+    "id": "F17_stability",
+    "file": "F17_stability.png",
+    "title": "Selection stability",
+    "desc": "How often each feature is chosen across folds; past the line = stable/trustworthy."
+  },
+  {
+    "id": "F18_importance",
+    "file": "F18_importance.png",
+    "title": "Permutation importance",
+    "desc": "Which stable features actually drive the model (AUC lost when each is scrambled)."
+  },
+  {
+    "id": "F19_comparative",
+    "file": "F19_comparative.png",
+    "title": "Method comparison",
+    "desc": "QSQ-FS vs 7 baselines on AUC/Accuracy/F1 under one fair protocol."
+  },
+  {
+    "id": "F20_frontier",
+    "file": "F20_frontier.png",
+    "title": "Accuracy vs parsimony",
+    "desc": "AUC against feature count: top-left = accurate AND simple. QSQ-FS (star) uses ~half the features."
+  }
+]

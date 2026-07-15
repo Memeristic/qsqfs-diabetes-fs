@@ -1,0 +1,76 @@
+# =====================================================================
+# QSQ-FS canonical configuration
+# Keys under stage1/stage2 map directly onto QSQFS.__init__ parameters.
+# =====================================================================
+
+demo_mode: false
+
+paths:
+  data_root: "./data/mimic-iv-demo/"
+  results_dir: "./results/"
+
+preprocessing:
+  top_labs: 50
+  top_vitals: 30              # used by the scalable chartevents loader (real data)
+  top_meds: 50
+  top_dx_categories: 30
+  combine_how: "inner"         # "inner" (complete cases) or "outer" (impute; real MIMIC)
+
+evaluation:
+  n_outer_folds: 10            # outer folds; also the paired-test sample size
+  classifier: "fusion"         # "fusion" | "mlp" | "knn" | "auto"
+
+# --- Stage 1: per-modality exploration -------------------------------
+stage1:
+  n_colonies: 25
+  max_iter_stage1: 15
+  max_iter_stage2: 0
+  alpha: 0.85          # skill weight; (1-alpha) weights the parsimony term
+  max_frac: 0.50       # cardinality ceiling as a fraction of d
+  min_frac: 0.05       # cardinality floor as a fraction of d
+  w_AI: 0.50
+  delta1: 0.97
+  weak_thresh1: 0.30
+  stagnation_window: 15
+  diversity_thresh: 0.05
+  k_nn: 3
+  cv_folds: 5
+  fitness_metric: "balanced"   # "accuracy" | "auc" | "balanced" (AUC-aware; better
+                               # on imbalanced cohorts than raw accuracy)
+
+# --- Stage 2: multimodal refinement ----------------------------------
+stage2:
+  n_colonies: 40
+  max_iter_stage1: 0
+  max_iter_stage2: 40
+  alpha: 0.85          # skill weight; (1-alpha) weights the parsimony term
+  max_frac: 0.50
+  min_frac: 0.05
+  w_AI: 0.50
+  delta2: 0.95
+  rho: 0.80
+  stagnation_window: 15
+  diversity_thresh: 0.05
+  k_nn: 3
+  cv_folds: 5
+  fitness_metric: "balanced"
+
+neural_model:
+  hidden_layers: [64, 32]
+  dropout_rate: 0.3
+  l2_alpha: 0.0001             # L2 weight-decay penalty
+  batch_size: 32
+  max_epochs: 200
+  early_stopping_patience: 15
+  learning_rate: 0.001
+  # --- multimodal fusion (final classifier when evaluation.classifier=fusion) ---
+  fusion_strategy: "hybrid"    # "feature" | "decision" | "hybrid"
+  latent_dim: 8                # per-modality latent width in feature-level fusion
+
+comparative:
+  n_trials: 10                 # = outer CV folds
+  n_agents: 30                 # equal population budget across all metaheuristics
+  max_iter: 20                 # equal iteration budget across all metaheuristics
+
+ablation:
+  n_trials: 10                 # = outer CV folds

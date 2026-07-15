@@ -1,0 +1,26 @@
+# --- Core (required) ---
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.12
+pyyaml>=6.0
+loguru>=0.7
+streamlit>=1.49
+plotly>=5.20
+
+# --- Optional accelerators (uncomment to enable) ---
+statsmodels>=0.14
+
+# note: statsmodels supplies the confidence intervals for the F09 odds-ratio
+# figure in
+# run_20_figures.py; the app and every other script run without it.
+#
+# A properly-regularised sklearn MLP is the DEFAULT classifier so the app runs
+# everywhere (incl. Streamlit Community Cloud) without heavy downloads.
+# Enable torch locally for the GPU/BatchNorm MLP; enable xgboost for the extra
+# comparative baseline; enable shap for SHAP feature importance.
+# torch>=2.1
+# xgboost>=2.0
+# shap>=0.44

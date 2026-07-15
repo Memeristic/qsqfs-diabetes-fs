@@ -1,0 +1,660 @@
+{
+  "dataset": {
+    "source": "mimic",
+    "modalities": {
+      "labs": 48,
+      "vitals": 11,
+      "meds": 50,
+      "dx": 26
+    },
+    "leakage_policy": "tier1_criterion_analytes+tier2_treatment_codes+tier3_medications",
+    "n_criterion_itemids_excluded": 28,
+    "n_patients": 100,
+    "n_features": 135,
+    "prevalence_pct": 35.0,
+    "n_positive": 35,
+    "n_negative": 65
+  },
+  "full_data_selection": {
+    "stage1_pool_size": 62,
+    "stage2_n_selected": 19,
+    "n_max_ceiling": 68,
+    "saturated_at_ceiling": false,
+    "stage2_best_fitness": 0.7413,
+    "stage2_selected_features": [
+      "labs_item_50960",
+      "labs_item_51250",
+      "labs_item_51277",
+      "vitals_item_220179",
+      "vitals_item_220180",
+      "vitals_item_220277",
+      "meds_Acetaminophen_IV",
+      "meds_Atorvastatin",
+      "meds_Famotidine",
+      "meds_Levothyroxine_Sodium",
+      "meds_Metoprolol_Tartrate",
+      "meds_Milk_of_Magnesia",
+      "meds_OxyCODONE_(Immediate_Release)",
+      "meds_OxycoDONE_(Immediate_Release)_",
+      "meds_Sodium_Chloride_0.9%__Flush",
+      "dx_27800",
+      "dx_4280",
+      "dx_E039",
+      "dx_N179"
+    ]
+  },
+  "nested_cv_fusion": {
+    "n_outer": 10,
+    "auc_mean": 0.581,
+    "auc_ci95": 0.1007,
+    "accuracy_mean": 0.52,
+    "accuracy_std": 0.1549,
+    "f1_mean": 0.4965,
+    "f1_std": 0.1002,
+    "n_features_mean": 29.5,
+    "elapsed_s": 98.9
+  },
+  "nested_cv_knn": {
+    "n_outer": 10,
+    "auc_mean": 0.5649,
+    "auc_ci95": 0.1006,
+    "accuracy_mean": 0.65,
+    "accuracy_std": 0.1354,
+    "f1_mean": 0.3338,
+    "f1_std": 0.2312,
+    "n_features_mean": 29.5,
+    "elapsed_s": 0.0
+  },
+  "per_fold_fusion": [
+    {
+      "fold": "Fold 1",
+      "accuracy": 0.3,
+      "auc": 0.381,
+      "f1": 0.4615,
+      "n_features": 35
+    },
+    {
+      "fold": "Fold 2",
+      "accuracy": 0.7,
+      "auc": 0.6667,
+      "f1": 0.4,
+      "n_features": 33
+    },
+    {
+      "fold": "Fold 3",
+      "accuracy": 0.6,
+      "auc": 0.6667,
+      "f1": 0.5,
+      "n_features": 27
+    },
+    {
+      "fold": "Fold 4",
+      "accuracy": 0.3,
+      "auc": 0.5714,
+      "f1": 0.4615,
+      "n_features": 44
+    },
+    {
+      "fold": "Fold 5",
+      "accuracy": 0.7,
+      "auc": 0.8571,
+      "f1": 0.6667,
+      "n_features": 23
+    },
+    {
+      "fold": "Fold 6",
+      "accuracy": 0.4,
+      "auc": 0.3333,
+      "f1": 0.4,
+      "n_features": 32
+    },
+    {
+      "fold": "Fold 7",
+      "accuracy": 0.5,
+      "auc": 0.7083,
+      "f1": 0.6154,
+      "n_features": 17
+    },
+    {
+      "fold": "Fold 8",
+      "accuracy": 0.7,
+      "auc": 0.5833,
+      "f1": 0.4,
+      "n_features": 19
+    },
+    {
+      "fold": "Fold 9",
+      "accuracy": 0.5,
+      "auc": 0.625,
+      "f1": 0.4444,
+      "n_features": 41
+    },
+    {
+      "fold": "Fold 10",
+      "accuracy": 0.5,
+      "auc": 0.4167,
+      "f1": 0.6154,
+      "n_features": 24
+    }
+  ],
+  "stable_features": {
+    "threshold": 0.5,
+    "n_stable": 8,
+    "features": [
+      "meds_Polyethylene_Glycol",
+      "meds_Levothyroxine_Sodium",
+      "meds_Magnesium_Sulfate",
+      "dx_311",
+      "labs_item_51248",
+      "labs_item_50947",
+      "meds_Vancomycin",
+      "meds_Albumin_25%_(12.5g_/_50mL)"
+    ],
+    "top10": [
+      {
+        "feature": "meds_Polyethylene_Glycol",
+        "selection_frequency": 0.7
+      },
+      {
+        "feature": "meds_Magnesium_Sulfate",
+        "selection_frequency": 0.6
+      },
+      {
+        "feature": "meds_Levothyroxine_Sodium",
+        "selection_frequency": 0.6
+      },
+      {
+        "feature": "labs_item_50947",
+        "selection_frequency": 0.5
+      },
+      {
+        "feature": "meds_Albumin_25%_(12.5g_/_50mL)",
+        "selection_frequency": 0.5
+      },
+      {
+        "feature": "labs_item_51248",
+        "selection_frequency": 0.5
+      },
+      {
+        "feature": "meds_Vancomycin",
+        "selection_frequency": 0.5
+      },
+      {
+        "feature": "dx_311",
+        "selection_frequency": 0.5
+      },
+      {
+        "feature": "meds_Heparin",
+        "selection_frequency": 0.4
+      },
+      {
+        "feature": "meds_PHENYLEPHrine",
+        "selection_frequency": 0.4
+      }
+    ]
+  },
+  "fusion_strategies": [
+    {
+      "Strategy": "feature",
+      "AUC": 0.5815,
+      "Accuracy": 0.57,
+      "F1": 0.3499,
+      "Sensitivity": 0.3714
+    },
+    {
+      "Strategy": "decision",
+      "AUC": 0.6214,
+      "Accuracy": 0.65,
+      "F1": 0.3462,
+      "Sensitivity": 0.2857
+    },
+    {
+      "Strategy": "hybrid",
+      "AUC": 0.5833,
+      "Accuracy": 0.59,
+      "F1": 0.3898,
+      "Sensitivity": 0.3714
+    }
+  ],
+  "confusion": {
+    "threshold_mean_across_folds": 0.196,
+    "threshold_tuned_on": "training partition of each outer fold",
+    "tn": 27,
+    "fp": 38,
+    "fn": 10,
+    "tp": 25,
+    "sensitivity_recall": 0.7143,
+    "specificity": 0.4154,
+    "ppv_precision": 0.3968,
+    "npv": 0.7297,
+    "oof_auc": 0.5842,
+    "n_oof": 100
+  },
+  "comparative": {
+    "table": [
+      {
+        "Method": "SVM",
+        "AUC": 0.7339,
+        "AUC_std": 0.1554,
+        "Accuracy": 0.7,
+        "F1": 0.4367,
+        "Features": 135.0
+      },
+      {
+        "Method": "RandomForest",
+        "AUC": 0.7095,
+        "AUC_std": 0.1606,
+        "Accuracy": 0.67,
+        "F1": 0.3324,
+        "Features": 135.0
+      },
+      {
+        "Method": "QSQ-FS",
+        "AUC": 0.6652,
+        "AUC_std": 0.19,
+        "Accuracy": 0.68,
+        "F1": 0.3057,
+        "Features": 63.2
+      },
+      {
+        "Method": "RIME",
+        "AUC": 0.6372,
+        "AUC_std": 0.1375,
+        "Accuracy": 0.67,
+        "F1": 0.2905,
+        "Features": 68.2
+      },
+      {
+        "Method": "PLO",
+        "AUC": 0.5929,
+        "AUC_std": 0.1267,
+        "Accuracy": 0.66,
+        "F1": 0.2586,
+        "Features": 64.9
+      },
+      {
+        "Method": "PSO",
+        "AUC": 0.5744,
+        "AUC_std": 0.2105,
+        "Accuracy": 0.67,
+        "F1": 0.2805,
+        "Features": 62.1
+      },
+      {
+        "Method": "HGS",
+        "AUC": 0.5628,
+        "AUC_std": 0.1977,
+        "Accuracy": 0.66,
+        "F1": 0.2671,
+        "Features": 64.8
+      },
+      {
+        "Method": "GA",
+        "AUC": 0.558,
+        "AUC_std": 0.1867,
+        "Accuracy": 0.65,
+        "F1": 0.2086,
+        "Features": 63.7
+      },
+      {
+        "Method": "XGBoost",
+        "AUC": 0.5417,
+        "AUC_std": 0.175,
+        "Accuracy": 0.59,
+        "F1": 0.2567,
+        "Features": 135.0
+      }
+    ],
+    "stats": [
+      {
+        "algorithm": "GA",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.6499999999999999,
+        "delta_acc": 0.030000000000000006,
+        "w_statistic": 6.0,
+        "p_value": 0.125,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "PSO",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.6699999999999999,
+        "delta_acc": 0.009999999999999998,
+        "w_statistic": 9.0,
+        "p_value": 0.5,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "RIME",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.67,
+        "delta_acc": 0.01000000000000002,
+        "w_statistic": 18.5,
+        "p_value": 0.5,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "PLO",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.6599999999999999,
+        "delta_acc": 0.020000000000000007,
+        "w_statistic": 12.0,
+        "p_value": 0.4062,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "HGS",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.6599999999999999,
+        "delta_acc": 0.020000000000000007,
+        "w_statistic": 10.5,
+        "p_value": 0.5312,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "SVM",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.7,
+        "delta_acc": -0.020000000000000007,
+        "w_statistic": 8.0,
+        "p_value": 0.7344,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "RandomForest",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.67,
+        "delta_acc": 0.009999999999999998,
+        "w_statistic": 15.0,
+        "p_value": 0.5,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      },
+      {
+        "algorithm": "XGBoost",
+        "mean_acc_ours": 0.6799999999999999,
+        "mean_acc_theirs": 0.59,
+        "delta_acc": 0.09,
+        "w_statistic": 22.5,
+        "p_value": 0.0938,
+        "significant": false,
+        "alpha_bonf": 0.0063
+      }
+    ]
+  },
+  "ablation": {
+    "table": [
+      {
+        "Variant": "Full QSQ-FS",
+        "Accuracy": 0.63,
+        "Acc_std": 0.0458,
+        "Features": 42.8,
+        "Runtime_s": 6.82
+      },
+      {
+        "Variant": "No QS (w_AI off)",
+        "Accuracy": 0.61,
+        "Acc_std": 0.0831,
+        "Features": 44.6,
+        "Runtime_s": 6.88
+      },
+      {
+        "Variant": "No QQ archive",
+        "Accuracy": 0.64,
+        "Acc_std": 0.08,
+        "Features": 46.1,
+        "Runtime_s": 7.65
+      },
+      {
+        "Variant": "No Cache",
+        "Accuracy": 0.63,
+        "Acc_std": 0.0458,
+        "Features": 42.8,
+        "Runtime_s": 31.44
+      },
+      {
+        "Variant": "No Elitism",
+        "Accuracy": 0.69,
+        "Acc_std": 0.1578,
+        "Features": 52.7,
+        "Runtime_s": 6.9
+      }
+    ],
+    "stats": [
+      {
+        "mechanism": "No QS (w_AI off)",
+        "contribution_pct": 2.0,
+        "w_statistic": 10.0,
+        "p_value": 0.375,
+        "significant": false,
+        "alpha_bonf": 0.0125
+      },
+      {
+        "mechanism": "No QQ archive",
+        "contribution_pct": -1.0,
+        "w_statistic": 1.5,
+        "p_value": 0.875,
+        "significant": false,
+        "alpha_bonf": 0.0125
+      },
+      {
+        "mechanism": "No Cache",
+        "contribution_pct": 0.0,
+        "w_statistic": "n/a",
+        "p_value": 1.0,
+        "significant": false,
+        "alpha_bonf": 0.0125
+      },
+      {
+        "mechanism": "No Elitism",
+        "contribution_pct": -6.0,
+        "w_statistic": 9.0,
+        "p_value": 0.8125,
+        "significant": false,
+        "alpha_bonf": 0.0125
+      }
+    ]
+  },
+  "spss_analysis": {
+    "n_features_tested": 135,
+    "n_significant_fdr": 0,
+    "top_discriminators": [
+      {
+        "Feature": "vitals_item_220210",
+        "Mean_Diabetic": 20.405,
+        "SD_Diabetic": 2.977,
+        "Mean_NonDiabetic": 18.618,
+        "SD_NonDiabetic": 3.428,
+        "Levene_p": 0.5168,
+        "EqualVar": true,
+        "t": 2.599,
+        "t_p": 0.0108,
+        "MannWhitney_U": 1518.0,
+        "MW_p": 0.006,
+        "Cohens_d": 0.545,
+        "AUC": 0.667,
+        "OddsRatio": 3.176,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.2847,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_51244",
+        "Mean_Diabetic": 14.714,
+        "SD_Diabetic": 8.577,
+        "Mean_NonDiabetic": 19.228,
+        "SD_NonDiabetic": 9.469,
+        "Levene_p": 0.6276,
+        "EqualVar": true,
+        "t": -2.348,
+        "t_p": 0.0209,
+        "MannWhitney_U": 807.0,
+        "MW_p": 0.017,
+        "Cohens_d": -0.492,
+        "AUC": 0.645,
+        "OddsRatio": 0.545,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.3842,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_50868",
+        "Mean_Diabetic": 15.394,
+        "SD_Diabetic": 2.761,
+        "Mean_NonDiabetic": 14.442,
+        "SD_NonDiabetic": 3.075,
+        "Levene_p": 0.8381,
+        "EqualVar": true,
+        "t": 1.529,
+        "t_p": 0.1294,
+        "MannWhitney_U": 1466.0,
+        "MW_p": 0.0178,
+        "Cohens_d": 0.321,
+        "AUC": 0.644,
+        "OddsRatio": 2.474,
+        "t_p_FDR": 0.5381,
+        "MW_p_FDR": 0.3842,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_51256",
+        "Mean_Diabetic": 75.35,
+        "SD_Diabetic": 10.938,
+        "Mean_NonDiabetic": 70.491,
+        "SD_NonDiabetic": 10.537,
+        "Levene_p": 0.9969,
+        "EqualVar": true,
+        "t": 2.171,
+        "t_p": 0.0324,
+        "MannWhitney_U": 1460.0,
+        "MW_p": 0.0199,
+        "Cohens_d": 0.455,
+        "AUC": 0.642,
+        "OddsRatio": 2.875,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.3842,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_50902",
+        "Mean_Diabetic": 101.258,
+        "SD_Diabetic": 5.586,
+        "Mean_NonDiabetic": 102.837,
+        "SD_NonDiabetic": 3.303,
+        "Levene_p": 0.0148,
+        "EqualVar": false,
+        "t": -1.534,
+        "t_p": 0.1317,
+        "MannWhitney_U": 830.0,
+        "MW_p": 0.0265,
+        "Cohens_d": -0.373,
+        "AUC": 0.635,
+        "OddsRatio": 0.38,
+        "t_p_FDR": 0.5381,
+        "MW_p_FDR": 0.4474,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "meds_Famotidine",
+        "Mean_Diabetic": 0.229,
+        "SD_Diabetic": 0.426,
+        "Mean_NonDiabetic": 0.477,
+        "SD_NonDiabetic": 0.503,
+        "Levene_p": 0.0149,
+        "EqualVar": false,
+        "t": -2.606,
+        "t_p": 0.0109,
+        "MannWhitney_U": 855.0,
+        "MW_p": 0.0159,
+        "Cohens_d": -0.52,
+        "AUC": 0.624,
+        "OddsRatio": 0.542,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.3842,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "meds_Atorvastatin",
+        "Mean_Diabetic": 0.4,
+        "SD_Diabetic": 0.497,
+        "Mean_NonDiabetic": 0.154,
+        "SD_NonDiabetic": 0.364,
+        "Levene_p": 0.0056,
+        "EqualVar": false,
+        "t": 2.581,
+        "t_p": 0.0126,
+        "MannWhitney_U": 1417.5,
+        "MW_p": 0.0063,
+        "Cohens_d": 0.593,
+        "AUC": 0.623,
+        "OddsRatio": 0.542,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.2847,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_51006",
+        "Mean_Diabetic": 27.155,
+        "SD_Diabetic": 18.628,
+        "Mean_NonDiabetic": 20.866,
+        "SD_NonDiabetic": 14.334,
+        "Levene_p": 0.1382,
+        "EqualVar": true,
+        "t": 1.88,
+        "t_p": 0.0631,
+        "MannWhitney_U": 1408.5,
+        "MW_p": 0.0506,
+        "Cohens_d": 0.394,
+        "AUC": 0.619,
+        "OddsRatio": 1.835,
+        "t_p_FDR": 0.4351,
+        "MW_p_FDR": 0.5255,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_50821",
+        "Mean_Diabetic": 120.143,
+        "SD_Diabetic": 62.502,
+        "Mean_NonDiabetic": 147.349,
+        "SD_NonDiabetic": 74.017,
+        "Levene_p": 0.3732,
+        "EqualVar": true,
+        "t": -1.848,
+        "t_p": 0.0677,
+        "MannWhitney_U": 875.5,
+        "MW_p": 0.0573,
+        "Cohens_d": -0.387,
+        "AUC": 0.615,
+        "OddsRatio": 0.456,
+        "t_p_FDR": 0.4351,
+        "MW_p_FDR": 0.5354,
+        "Sig": "ns"
+      },
+      {
+        "Feature": "labs_item_51274",
+        "Mean_Diabetic": 15.81,
+        "SD_Diabetic": 5.411,
+        "Mean_NonDiabetic": 13.943,
+        "SD_NonDiabetic": 3.267,
+        "Levene_p": 0.0886,
+        "EqualVar": true,
+        "t": 2.152,
+        "t_p": 0.0339,
+        "MannWhitney_U": 1395.5,
+        "MW_p": 0.0628,
+        "Cohens_d": 0.451,
+        "AUC": 0.613,
+        "OddsRatio": 2.193,
+        "t_p_FDR": 0.4253,
+        "MW_p_FDR": 0.5354,
+        "Sig": "ns"
+      }
+    ]
+  }
+}

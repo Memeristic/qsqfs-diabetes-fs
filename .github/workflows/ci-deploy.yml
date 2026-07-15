@@ -1,0 +1,71 @@
+name: CI
+
+# Keeps `main` green. Streamlit Community Cloud redeploys automatically on every
+# push to the tracked branch once the app is linked (see DEPLOYMENT.md), so this
+# workflow's job is to guarantee the code that gets deployed actually imports,
+# lints, and passes the smoke tests first.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.11", "3.12" ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies (core only)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest ruff
+
+      - name: Lint (ruff, non-blocking style)
+        run: ruff check src ui app.py verify_setup.py --select E9,F63,F7,F82 --output-format=github
+
+      - name: Byte-compile
+        run: python -m py_compile app.py verify_setup.py src/*.py ui/*.py
+
+      - name: Run smoke tests
+        run: python -m pytest tests/ -q
+
+  matlab-octave-smoke:
+    # Non-blocking: verifies the MATLAB/Octave port's portable pieces (generic
+    # CSV loader + run_pipeline dispatch) in GNU Octave. Marked continue-on-error
+    # because Octave is a stand-in for MATLAB, not the target runtime, and we
+    # never want it to block a Streamlit deploy.
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Octave
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends octave
+      - name: Run Octave smoke test
+        run: octave-cli --eval "cd matlab; octave_smoke"
+
+  deploy-note:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Streamlit auto-deploy reminder
+        run: |
+          echo "Tests passed on main."
+          echo "Streamlit Community Cloud will redeploy app.py automatically"
+          echo "from this push (no manual step) once the app has been linked once."
+          echo "First-time linking instructions: see DEPLOYMENT.md."
